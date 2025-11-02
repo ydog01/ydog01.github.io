@@ -1,0 +1,121 @@
+/* 简单星星背景 */
+.simple-stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: radial-gradient(ellipse at center, #0a0e17 0%, #050811 70%);
+    overflow: hidden;
+}
+
+/* 基础星星 */
+.star {
+    position: absolute;
+    background-color: #fff;
+    border-radius: 50%;
+    animation: twinkle 8s infinite ease-in-out;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    z-index: 2;
+}
+
+.star.small {
+    width: 1px;
+    height: 1px;
+}
+
+.star.medium {
+    width: 2px;
+    height: 2px;
+}
+
+.star.large {
+    width: 3px;
+    height: 3px;
+}
+
+.star.giant {
+    width: 4px;
+    height: 4px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 1);
+}
+
+/* 彩色星星 */
+.star.blue {
+    background-color: #a4d4ff;
+    box-shadow: 0 0 10px rgba(164, 212, 255, 0.8);
+}
+
+.star.purple {
+    background-color: #d4a4ff;
+    box-shadow: 0 0 10px rgba(212, 164, 255, 0.8);
+}
+
+/* 流星 */
+.shooting-star {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: linear-gradient(90deg, #fff, #a4d4ff, transparent);
+    border-radius: 50%;
+    filter: blur(1px);
+    animation: shoot 6s linear forwards;
+    z-index: 2;
+}
+
+.shooting-star::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+    transform: translateX(-100px);
+}
+
+/* 动画定义 */
+@keyframes twinkle {
+    0%, 100% { 
+        opacity: 0.3; 
+        transform: scale(1);
+    }
+    50% { 
+        opacity: 1; 
+        transform: scale(1.3);
+    }
+}
+
+@keyframes shoot {
+    0% {
+        transform: translateX(0) translateY(0) rotate(45deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(1000px) translateY(1000px) rotate(45deg);
+        opacity: 0;
+    }
+}
+
+/* 星星闪烁变体 */
+@keyframes twinkleFast {
+    0%, 100% { opacity: 0.2; transform: scale(1); }
+    50% { opacity: 0.9; transform: scale(1.2); }
+}
+
+@keyframes twinkleSlow {
+    0%, 100% { opacity: 0.1; transform: scale(1); }
+    50% { opacity: 0.7; transform: scale(1.1); }
+}
+
+.star.twinkle-fast {
+    animation: twinkleFast 4s infinite ease-in-out;
+}
+
+.star.twinkle-slow {
+    animation: twinkleSlow 12s infinite ease-in-out;
+}

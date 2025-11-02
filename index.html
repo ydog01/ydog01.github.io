@@ -5,223 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ydog01 的主页</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        /* 基础样式 */
-        body {
-            margin: 0;
-            overflow-x: hidden;
-            font-family: 'Microsoft YaHei', sans-serif;
-            background-color: #0d1117;
-            color: #c9d1d9;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        /* 静态星空背景 */
-        .galaxy {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-        }
-
-        .star {
-            position: absolute;
-            background-color: #fff;
-            border-radius: 50%;
-            animation: twinkle 3s infinite ease-in-out;
-        }
-
-        /* 亚克力材质主容器 */
-        .container {
-            width: 85%;
-            max-width: 800px;
-            padding: 2.5rem;
-            background: rgba(22, 27, 34, 0.4);
-            border-radius: 16px;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(12px) saturate(180%);
-            -webkit-backdrop-filter: blur(12px) saturate(180%);
-            border: 1px solid rgba(88, 166, 255, 0.15);
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .container:hover {
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-            background: rgba(22, 27, 34, 0.5);
-        }
-
-        /* 个人信息卡片 */
-        .profile-card {
-            margin-bottom: 2rem;
-        }
-
-        .avatar {
-            width: 140px;
-            height: 140px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid rgba(88, 166, 255, 0.5);
-            box-shadow: 0 0 25px rgba(88, 166, 255, 0.3);
-            transition: all 0.3s ease;
-        }
-
-        .avatar:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 35px rgba(88, 166, 255, 0.5);
-        }
-
-        h1 {
-            color: #58a6ff;
-            margin: 1.5rem 0 0.5rem;
-            font-size: 2.4rem;
-            text-shadow: 0 0 12px rgba(88, 166, 255, 0.3);
-        }
-
-        .tagline {
-            font-style: italic;
-            margin: 0.5rem 0 1.5rem;
-            color: #8b949e;
-            font-size: 1.1rem;
-        }
-
-        .details {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin: 1.5rem 0;
-        }
-
-        .detail-item {
-            display: flex;
-            align-items: center;
-            font-size: 0.95rem;
-            background: rgba(33, 38, 45, 0.7);
-            padding: 0.5rem 1.2rem;
-            border-radius: 24px;
-            border: 1px solid #30363d;
-            transition: all 0.3s ease;
-        }
-
-        .detail-item:hover {
-            background: rgba(48, 54, 61, 0.7);
-            border-color: #58a6ff;
-        }
-
-        .detail-item i {
-            margin-right: 0.5rem;
-            color: #58a6ff;
-        }
-
-        /* 社交链接 */
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .social-link {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: rgba(33, 38, 45, 0.7);
-            border: 1px solid #30363d;
-            color: #c9d1d9;
-            font-size: 1.5rem;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            position: relative;
-        }
-
-        .social-link:hover {
-            background: rgba(48, 54, 61, 0.7);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            border-color: #58a6ff;
-        }
-
-        /* 自定义图标颜色 */
-        .fa-github { color: #f0f6fc; }
-        .fa-bilibili { color: #00a1d6; }
-        .fa-gamepad { color: #ff66aa; }
-
-        /* 页脚 */
-        footer {
-            margin-top: 2.5rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid rgba(88, 166, 255, 0.1);
-            color: #8b949e;
-            font-size: 0.9rem;
-        }
-
-        /* 动画定义 */
-        @keyframes twinkle {
-            0%, 100% { opacity: 0.8; }
-            50% { opacity: 0.3; }
-        }
-
-        /* 响应式设计 */
-        @media (max-width: 768px) {
-            .container {
-                width: 90%;
-                padding: 1.8rem;
-            }
-            
-            .avatar {
-                width: 120px;
-                height: 120px;
-            }
-            
-            h1 {
-                font-size: 2rem;
-            }
-            
-            .social-links {
-                gap: 1rem;
-            }
-            
-            .social-link {
-                width: 45px;
-                height: 45px;
-                font-size: 1.3rem;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="styles/stars.css">
+    <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
-    <!-- 静态星空背景 -->
-    <div class="galaxy" id="galaxy"></div>
+    <!-- 简单星星背景 -->
+    <div class="simple-stars" id="simpleStars"></div>
+    
+    <!-- 光标光晕 -->
+    <div class="cursor-glow" id="cursorGlow"></div>
     
     <!-- 主容器 -->
     <div class="container">
         <!-- 个人信息 -->
         <div class="profile-card">
-            <img src="https://q1.qlogo.cn/g?b=qq&nk=1917927623&s=640" 
-                 class="avatar" 
-                 alt="ydog01的头像"
-                 onerror="this.src='https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f47e.svg'">
-            <h1>ydog01</h1>
+            <div class="avatar-container">
+                <img src="https://q1.qlogo.cn/g?b=qq&nk=1917927623&s=640" 
+                     class="avatar" 
+                     alt="ydog01的头像"
+                     onerror="this.src='https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f47e.svg'">
+                <div class="avatar-glow"></div>
+                <div class="avatar-sparkles"></div>
+            </div>
+            <h1 class="glowing-text">ydog01</h1>
             <p class="tagline">一名C++开发者~</p>
             
             <div class="details">
                 <div class="detail-item">
-                    <i>🎂</i> 12月6日
+                    <i class="fas fa-birthday-cake"></i>
+                    <span>12月6日</span>
                 </div>
                 <div class="detail-item">
-                    <i>📧</i> QQ: 1917927623
+                    <i class="fas fa-envelope"></i>
+                    <span>QQ: 1917927623</span>
                 </div>
                 <div class="detail-item">
-                    <i>💻</i> C++开发者
+                    <i class="fas fa-code"></i>
+                    <span>C++开发者</span>
                 </div>
             </div>
         </div>
@@ -229,69 +49,35 @@
         <!-- 社交链接 -->
         <div class="social-links">
             <a href="https://github.com/ydog01" 
-               class="social-link" 
+               class="social-link github" 
                target="_blank" 
                title="GitHub">
                 <i class="fab fa-github"></i>
+                <div class="social-glow"></div>
             </a>
             <a href="https://space.bilibili.com/1283540854" 
-               class="social-link" 
+               class="social-link bilibili" 
                target="_blank" 
                title="哔哩哔哩">
                 <i class="fab fa-bilibili"></i>
+                <div class="social-glow"></div>
             </a>
             <a href="https://osu.ppy.sh/users/ydog01" 
-               class="social-link" 
+               class="social-link osu" 
                target="_blank" 
                title="osu! 个人资料">
                 <i class="fas fa-gamepad"></i>
+                <div class="social-glow"></div>
             </a>
         </div>
         
         <footer>
-            © 2025 ydog01 | 伊蕾娜万岁~
+            <p>© 2025 ydog01 | 伊蕾娜万岁~</p>
+            <div class="footer-sparkle"></div>
         </footer>
     </div>
 
-    <script>
-        // 创建静态星空
-        function createGalaxy() {
-            const galaxy = document.getElementById('galaxy');
-            const starCount = 80;
-            
-            // 清空容器
-            galaxy.innerHTML = '';
-            
-            // 创建星星
-            for (let i = 0; i < starCount; i++) {
-                const star = document.createElement('div');
-                star.className = 'star';
-                
-                // 随机大小 (1-3px)
-                const size = Math.random() * 2 + 1;
-                star.style.width = `${size}px`;
-                star.style.height = `${size}px`;
-                
-                // 随机位置
-                star.style.left = `${Math.random() * 100}%`;
-                star.style.top = `${Math.random() * 100}%`;
-                
-                // 随机透明度
-                star.style.opacity = Math.random() * 0.5 + 0.3;
-                
-                // 随机动画持续时间
-                const duration = Math.random() * 2 + 1;
-                star.style.animationDuration = `${duration}s`;
-                
-                // 随机延迟
-                star.style.animationDelay = `${Math.random() * 3}s`;
-                
-                galaxy.appendChild(star);
-            }
-        }
-
-        // 页面加载时创建星空
-        window.onload = createGalaxy;
-    </script>
+    <script src="scripts/stars.js"></script>
+    <script src="scripts/main.js"></script>
 </body>
 </html>
