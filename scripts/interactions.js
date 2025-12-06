@@ -1,10 +1,11 @@
-// 交互效果
-document.addEventListener('DOMContentLoaded', function() {
-    // 光标光晕效果
+document.addEventListener('DOMContentLoaded', function()
+{
     const cursorGlow = document.getElementById('cursorGlow');
-    let mouseX = 0, mouseY = 0;
+    let mouseX = 0;
+    let mouseY = 0;
     
-    document.addEventListener('mousemove', function(e) {
+    document.addEventListener('mousemove', function(e)
+    {
         mouseX = e.clientX;
         mouseY = e.clientY;
         
@@ -12,29 +13,31 @@ document.addEventListener('DOMContentLoaded', function() {
         cursorGlow.style.top = mouseY + 'px';
     });
     
-    // 点击效果
-    document.addEventListener('click', function(e) {
+    document.addEventListener('click', function(e)
+    {
         createRipple(e.clientX, e.clientY);
     });
     
-    // 鼠标进入链接时的光晕放大效果
     const links = document.querySelectorAll('a, button, .detail-item');
-    links.forEach(link => {
-        link.addEventListener('mouseenter', function() {
+    links.forEach(link =>
+    {
+        link.addEventListener('mouseenter', function()
+        {
             cursorGlow.style.width = '60px';
             cursorGlow.style.height = '60px';
             cursorGlow.style.background = 'radial-gradient(circle, rgba(88, 166, 255, 0.6) 0%, transparent 70%)';
         });
         
-        link.addEventListener('mouseleave', function() {
+        link.addEventListener('mouseleave', function()
+        {
             cursorGlow.style.width = '40px';
             cursorGlow.style.height = '40px';
             cursorGlow.style.background = 'radial-gradient(circle, rgba(88, 166, 255, 0.4) 0%, transparent 70%)';
         });
     });
     
-    // 波纹效果
-    function createRipple(x, y) {
+    function createRipple(x, y)
+    {
         const ripple = document.createElement('div');
         ripple.style.position = 'fixed';
         ripple.style.left = x + 'px';
@@ -50,43 +53,49 @@ document.addEventListener('DOMContentLoaded', function() {
         
         document.body.appendChild(ripple);
         
-        setTimeout(() => {
+        setTimeout(() =>
+        {
             ripple.style.width = '200px';
             ripple.style.height = '200px';
             ripple.style.opacity = '0';
         }, 10);
         
-        setTimeout(() => {
-            if (ripple.parentNode) {
+        setTimeout(() =>
+        {
+            if (ripple.parentNode)
+            {
                 ripple.parentNode.removeChild(ripple);
             }
         }, 600);
     }
     
-    // 滚动视差效果
-    window.addEventListener('scroll', function() {
+    window.addEventListener('scroll', function()
+    {
         const scrolled = window.pageYOffset;
         const parallaxElements = document.querySelectorAll('.container, .profile-card');
         
-        parallaxElements.forEach((element, index) => {
+        parallaxElements.forEach((element, index) =>
+        {
             const speed = 0.3 + (index * 0.1);
             element.style.transform = `translateY(${scrolled * speed}px)`;
         });
     });
     
-    // 键盘交互效果
-    document.addEventListener('keydown', function(e) {
-        if (e.key === ' ') { // 空格键
+    document.addEventListener('keydown', function(e)
+    {
+        if (e.key === ' ')
+        {
             createRandomParticles();
         }
     });
     
-    // 随机粒子爆发
-    function createRandomParticles() {
+    function createRandomParticles()
+    {
         const container = document.getElementById('floatingParticles');
         const burstCount = 8;
         
-        for (let i = 0; i < burstCount; i++) {
+        for (let i = 0; i < burstCount; i++)
+        {
             const particle = document.createElement('div');
             particle.className = 'particle';
             particle.style.position = 'fixed';
@@ -96,7 +105,6 @@ document.addEventListener('DOMContentLoaded', function() {
             particle.style.height = '30px';
             particle.style.animation = 'none';
             
-            // 随机颜色
             const colors = [
                 'rgba(88, 166, 255, 0.8)',
                 'rgba(255, 107, 107, 0.8)',
@@ -108,29 +116,30 @@ document.addEventListener('DOMContentLoaded', function() {
             
             document.body.appendChild(particle);
             
-            // 随机方向动画
             const angle = Math.random() * Math.PI * 2;
             const distance = 100 + Math.random() * 200;
             const targetX = Math.cos(angle) * distance;
             const targetY = Math.sin(angle) * distance;
             
             particle.animate([
-                { 
+                {
                     transform: 'translate(-50%, -50%) scale(1)',
                     opacity: 1
                 },
-                { 
+                {
                     transform: `translate(calc(-50% + ${targetX}px), calc(-50% + ${targetY}px)) scale(0)`,
                     opacity: 0
                 }
-            ], {
+            ],
+            {
                 duration: 1000 + Math.random() * 500,
                 easing: 'cubic-bezier(0.175, 0.885, 0.32, 1.275)'
             });
             
-            // 动画结束后移除
-            setTimeout(() => {
-                if (particle.parentNode) {
+            setTimeout(() =>
+            {
+                if (particle.parentNode)
+                {
                     particle.parentNode.removeChild(particle);
                 }
             }, 1500);
