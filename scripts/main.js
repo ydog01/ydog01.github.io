@@ -1,5 +1,7 @@
 document.addEventListener('DOMContentLoaded', function()
 {
+    console.log("minecrat(1.20.4):https://wwbhe.lanzouu.com/iPEj03dimjta");
+    
     const cursorGlow = document.getElementById('cursorGlow');
     
     document.addEventListener('mousemove', function(e)
